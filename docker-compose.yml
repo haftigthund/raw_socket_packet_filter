@@ -4,7 +4,7 @@ services:
     router:
         build: ./router
         container_name: router-192.168.2.2
-        prvileged: true
+        privileged: true
         networks:
             net-192.168.2.0:
                 ipv4_address: 192.168.2.2
@@ -31,9 +31,9 @@ services:
                 ipv4_address: 192.168.2.4
             
 
-    networks:
-        net-192.168.2.0:
-            name: net-192.168.2.0
-            ipam:
-                config:
-                    - subnet: 192.168.2.0/24
+networks:
+    net-192.168.2.0:
+        name: net-192.168.2.0
+        ipam:
+            config:
+                - subnet: 192.168.2.0/24
