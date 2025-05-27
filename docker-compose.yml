@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+    router:
+        build: ./router
+        container_name: router-192.168.2.2
+        prvileged: true
+        networks:
+            net-192.168.2.0:
+                ipv4_address: 192.168.2.2
+
+    host1:
+        build: ./host
+        container_name: host1-192.168.2.1
+        networks:
+            net-192.168.2.0:
+                ipv4_address: 192.168.2.1
+
+    host3:
+        build: ./host
+        container_name: host3-192.168.2.3
+        networks:
+            net-192.168.2.0:
+                ipv4_address: 192.168.2.3
+
+    host4:
+        build: ./host
+        container_name: host4-192.168.2.4
+        networks:
+            net-192.168.2.0:
+                ipv4_address: 192.168.2.4
+            
+
+    networks:
+        net-192.168.2.0:
+            name: net-192.168.2.0
+            ipam:
+                config:
+                    - subnet: 192.168.2.0/24
